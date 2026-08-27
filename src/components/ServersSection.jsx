@@ -103,14 +103,14 @@ export default function ServersSection() {
     <section
       id="servers"
       className="relative border-t border-stone-200
-        bg-white py-24 text-stone-900"
+        overflow-hidden bg-white py-16 text-stone-900 sm:py-20 lg:py-24"
     >
       {/* Background glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/3
-          h-[700px] w-[700px] -translate-x-1/2
+          h-[500px] w-[500px] -translate-x-1/2
           -translate-y-1/2 rounded-full bg-red-950/5
-          blur-[150px]"
+          blur-[150px] sm:h-[700px] sm:w-[700px]"
       />
 
       <div

@@ -61,7 +61,7 @@ export default function ProgramsSection() {
     <section
       id="programs"
       className="relative border-t border-stone-200
-        bg-stone-50 py-24 text-stone-950"
+        overflow-hidden bg-stone-50 py-16 text-stone-950 sm:py-20 lg:py-24"
     >
       {/* Background accent */}
       <div
@@ -277,7 +277,7 @@ export default function ProgramsSection() {
                   src={facebookPluginUrl}
                   width="500"
                   height="700"
-                  className="block h-[700px] w-full
+                  className="block h-[600px] w-full sm:h-[700px]
                     border-0"
                   style={{
                     border: "none",

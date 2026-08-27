@@ -70,7 +70,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative border-t border-stone-200 bg-stone-50 py-24 text-stone-950"
+      className="relative overflow-hidden border-t border-stone-200 bg-stone-50 py-16 text-stone-950 sm:py-20 lg:py-24"
     >
       {/* Background glow */}
       <div
@@ -268,7 +268,7 @@ export default function AboutSection() {
 
         {/* Patron heading */}
         <div
-          className="mt-24 flex flex-col justify-between gap-4
+          className="mt-16 flex flex-col justify-between gap-4 sm:mt-20 lg:mt-24
             border-b border-stone-200 pb-5
             md:flex-row md:items-end"
         >
@@ -309,9 +309,9 @@ export default function AboutSection() {
           >
             {/* Independent image card */}
             <div
-              className="relative h-[420px] overflow-hidden rounded
+              className="relative h-[380px] overflow-hidden rounded
                 border border-red-900/15 bg-red-950 shadow-lg
-                lg:sticky lg:top-28 lg:col-span-5 lg:h-[560px]"
+                sm:h-[480px] lg:sticky lg:top-28 lg:col-span-5 lg:h-[560px]"
             >
               <img
                 src={sanTarcisio1}
@@ -339,7 +339,7 @@ export default function AboutSection() {
                 />
               </div>
 
-              <div className="absolute bottom-6 left-6 max-w-[58%]">
+              <div className="absolute bottom-5 left-5 max-w-[55%] sm:bottom-6 sm:left-6 sm:max-w-[58%]">
                 <span
                   className="text-[9px] font-bold uppercase
                     tracking-[0.2em] text-[#F0D76A]"
@@ -501,7 +501,7 @@ export default function AboutSection() {
         </div>
 
         {/* By-laws */}
-        <div className="mt-24">
+        <div className="mt-16 sm:mt-20 lg:mt-24">
           <div
             className="mb-10 flex flex-col justify-between gap-4
               border-b border-stone-200 pb-5

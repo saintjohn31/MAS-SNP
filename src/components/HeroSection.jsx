@@ -47,7 +47,7 @@ export default function HeroSection() {
     <>
       <section
         id="home"
-        className="relative flex min-h-screen items-center
+        className="relative flex min-h-[100svh] items-center
           justify-center overflow-hidden bg-[#180303]
           font-sans antialiased"
       >
@@ -78,8 +78,8 @@ export default function HeroSection() {
         {/* Hero content */}
         <div
           className="relative z-10 mx-auto flex w-full
-            max-w-6xl flex-col items-center px-5 pb-16
-            pt-32 text-center sm:px-8 sm:pb-20 sm:pt-36
+            max-w-6xl flex-col items-center px-4 pb-12
+            pt-24 text-center sm:px-8 sm:pb-20 sm:pt-36
             lg:px-12 lg:pt-40"
         >
           {/* Parish label */}
@@ -109,7 +109,7 @@ export default function HeroSection() {
           {/* Main heading */}
           <h1
             className="max-w-5xl text-balance font-serif
-              text-[clamp(2.85rem,8vw,6.5rem)] font-bold
+              text-[clamp(2.35rem,10vw,6.5rem)] font-bold
               leading-[0.98] tracking-[-0.035em]
               drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]"
           >
@@ -164,7 +164,7 @@ export default function HeroSection() {
             <button
               type="button"
               onClick={openVideo}
-              className="group inline-flex min-h-12
+              className="group inline-flex min-h-12 w-full max-w-sm
                 items-center justify-center gap-3 rounded-sm
                 border border-white/60 bg-transparent
                 px-7 py-3 font-sans text-[11px] font-bold
@@ -204,9 +204,9 @@ export default function HeroSection() {
 
           {/* Parish information */}
           <div
-            className="mt-14 grid w-full max-w-3xl
-              grid-cols-1 gap-5 border-t border-white/20
-              pt-6 sm:mt-16 sm:grid-cols-3 sm:gap-8"
+            className="mt-12 grid w-full max-w-3xl
+              grid-cols-3 gap-2 border-t border-white/20
+              pt-6 sm:mt-16 sm:gap-8"
           >
             {/* Foundation year */}
             <div>
@@ -280,8 +280,8 @@ export default function HeroSection() {
       {isVideoOpen && (
         <div
           className="fixed inset-0 z-[100] flex
-            items-center justify-center bg-black/90
-            px-4 py-8 backdrop-blur-sm"
+            items-center justify-center overflow-y-auto bg-black/90
+            px-3 py-4 backdrop-blur-sm sm:px-4 sm:py-8"
           role="dialog"
           aria-modal="true"
           aria-label="Ministry of Altar Servers video"

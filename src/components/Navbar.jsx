@@ -35,7 +35,7 @@ export default function Navbar() {
             : "bg-[#510708]"
           }`}
       >
-        <div className="mx-auto w-full max-w-[1500px] px-4 sm:px-6 lg:px-8 2xl:px-4">
+        <div className="mx-auto w-full max-w-[1500px] px-3 sm:px-6 lg:px-8 2xl:px-4">
           <div
             className={`relative flex items-center transition-all
               duration-300 ${scrolled ? "h-16" : "h-[72px]"}`}
@@ -43,10 +43,10 @@ export default function Navbar() {
             {/* Logo and brand — left */}
             <a
               href="#home"
-              className="flex min-w-0 shrink-0 items-center gap-2"
+              className="flex min-w-0 items-center gap-1.5 sm:gap-2"
             >
               <div
-                className="flex h-12 w-12 shrink-0 items-center
+                className="flex h-10 w-10 shrink-0 items-center
                   justify-center sm:h-14 sm:w-14"
               >
                 <img
@@ -59,17 +59,17 @@ export default function Navbar() {
 
               <div className="min-w-0 leading-tight">
                 <span
-                  className="block whitespace-nowrap font-serif text-[12px]
+                  className="block truncate font-serif text-[10px]
                     font-bold tracking-[0.04em] text-[#E6C84A]
-                    sm:text-sm xl:text-base"
+                    min-[380px]:text-[11px] sm:text-sm xl:text-base"
                 >
                   Ministry of Altar Servers
                 </span>
 
                 <span
-                  className="mt-0.5 block whitespace-nowrap text-[7px]
+                  className="mt-0.5 block truncate text-[6px]
                     font-semibold uppercase tracking-[0.1em] text-red-200
-                    sm:text-[8px] xl:text-[9px]"
+                    min-[380px]:text-[7px] sm:text-[8px] xl:text-[9px]"
                 >
                   Sto. Niño Parish · Bustos, Bulacan
                 </span>
@@ -173,8 +173,8 @@ export default function Navbar() {
 
       {/* Mobile and tablet menu */}
       <div
-        className={`fixed right-0 top-0 z-[60] h-screen w-[82%]
-          max-w-[290px] border-l border-[#D4AF37]/25 bg-[#510708]
+        className={`fixed right-0 top-0 z-[60] h-[100dvh] w-[86%]
+          max-w-xs border-l border-[#D4AF37]/25 bg-[#510708]
           shadow-2xl transition-transform duration-300 xl:hidden ${isOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >

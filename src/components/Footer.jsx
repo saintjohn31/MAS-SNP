@@ -107,7 +107,7 @@ export default function Footer() {
 
                 <div className="min-w-0 leading-tight">
                   <span
-                    className="block whitespace-nowrap font-serif
+                    className="block font-serif
                       text-sm font-bold tracking-[0.04em]
                       text-[#E6C84A] sm:text-base"
                   >
@@ -115,7 +115,7 @@ export default function Footer() {
                   </span>
 
                   <span
-                    className="mt-1 block whitespace-nowrap text-[8px]
+                    className="mt-1 block text-[8px]
                       font-semibold uppercase tracking-[0.1em]
                       text-red-300 sm:text-[9px]"
                   >
@@ -287,15 +287,15 @@ export default function Footer() {
         <div
           className="fixed inset-0 z-[120] flex items-center
             justify-center overflow-y-auto bg-black/85
-            px-4 py-8 backdrop-blur-md"
+            px-3 py-4 backdrop-blur-md sm:px-4 sm:py-8"
           role="dialog"
           aria-modal="true"
           aria-labelledby="developer-title"
           onClick={closeDeveloper}
         >
           <div
-            className="relative my-auto w-full max-w-5xl
-              overflow-hidden rounded-sm border
+            className="relative my-auto max-h-[calc(100dvh-2rem)] w-full max-w-5xl
+              overflow-y-auto rounded-sm border
               border-[#D4AF37]/30 bg-stone-50 shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
@@ -333,11 +333,11 @@ export default function Footer() {
               </svg>
             </button>
 
-            <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr]">
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(300px,380px)_1fr]">
               {/* Developer photograph */}
               <div
-                className="relative min-h-[420px] overflow-hidden
-                  bg-[#510708] lg:min-h-[650px]"
+                className="relative h-72 overflow-hidden
+                  bg-[#510708] sm:h-[420px] lg:h-full lg:min-h-[650px]"
               >
                 <img
                   src={developerPhoto}
@@ -370,8 +370,8 @@ export default function Footer() {
 
               {/* Developer information */}
               <div
-                className="max-h-[75vh] overflow-y-auto
-                  p-6 sm:p-8 lg:p-10"
+                className="p-5 sm:p-8 lg:max-h-[calc(100dvh-4rem)]
+                  lg:overflow-y-auto lg:p-10"
               >
                 <span
                   className="text-[10px] font-bold uppercase

@@ -52,7 +52,7 @@ export default function JoinSection() {
     <section
       id="join"
       className="relative border-t border-stone-200
-        bg-white py-24 text-stone-950"
+        overflow-hidden bg-white py-16 text-stone-950 sm:py-20 lg:py-24"
     >
       <div
         className="pointer-events-none absolute bottom-0 right-0

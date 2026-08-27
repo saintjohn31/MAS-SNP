@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white selection:bg-yellow-600 selection:text-gray-950">
+    <div className="min-h-screen w-full overflow-x-clip bg-white selection:bg-yellow-600 selection:text-gray-950">
       <Navbar />
       <main>
         <HeroSection />
