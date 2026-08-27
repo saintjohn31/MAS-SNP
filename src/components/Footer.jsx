@@ -333,35 +333,38 @@ export default function Footer() {
               </svg>
             </button>
 
-            <div className="grid grid-cols-1 lg:grid-cols-[minmax(300px,380px)_1fr]">
+            <div
+              className="grid grid-cols-1 items-stretch
+    lg:h-[min(850px,88dvh)]
+    lg:grid-cols-[minmax(320px,400px)_1fr]"
+            >
               {/* Developer photograph */}
               <div
-                className="relative h-72 overflow-hidden
-                  bg-[#510708] sm:h-[420px] lg:h-full lg:min-h-[650px]"
+                className="relative flex aspect-[2/3] w-full
+    items-center justify-center overflow-hidden
+    bg-[#510708] sm:aspect-[2/3]
+    lg:aspect-auto lg:h-full"
               >
                 <img
                   src={developerPhoto}
                   alt="John Railey Pael, Web Developer"
                   className="absolute inset-0 h-full w-full
-                    object-cover object-top"
+      object-cover object-center"
                 />
 
                 <div
                   className="absolute inset-0 bg-gradient-to-t
-                    from-black/80 via-transparent to-black/10"
+      from-black/80 via-transparent to-black/10"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full p-6">
-                  <p
-                    className="font-serif text-2xl font-bold
-                      text-white"
-                  >
+                <div className="absolute bottom-0 left-0 w-full p-5 sm:p-6">
+                  <p className="font-serif text-2xl font-bold text-white">
                     John Railey Pael
                   </p>
 
                   <p
                     className="mt-1 text-[10px] font-bold uppercase
-                      tracking-[0.16em] text-[#E6C84A]"
+        tracking-[0.16em] text-[#E6C84A]"
                   >
                     Web Developer · Altar Server
                   </p>
