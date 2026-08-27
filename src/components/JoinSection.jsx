@@ -198,15 +198,14 @@ export default function JoinSection() {
               </div>
 
               <a
-                href="/Autobiography-Template-MAS-SNP.pdf?v=2"
+                href="/Autobiography-Template-MAS-SNP.pdf"
                 download="Autobiography-Template-MAS-SNP.pdf"
-                className="inline-flex w-full items-center
-    justify-center gap-2 rounded bg-red-900
-    px-5 py-3.5 text-xs font-bold uppercase
-    tracking-wider text-white transition-all
-    hover:bg-red-800 hover:shadow-md"
+                className="inline-flex items-center justify-center rounded
+    bg-red-950 px-5 py-3 text-xs font-bold uppercase
+    tracking-wider text-[#E6C84A] transition-colors
+    hover:bg-red-900"
               >
-                I-download ang PDF Template
+                I-download ang Autobiography Template
               </a>
 
               <p className="text-[10px] text-stone-500">

@@ -1,5 +1,5 @@
 import React from "react";
-import bylawsPdf from "../MAS-SNP-Bylaws-2009.pdf";
+
 import sanTarcisio1 from "../santarcisio1.jpg";
 import sanTarcisio2 from "../santarcisio2.jpg";
 
@@ -610,38 +610,17 @@ export default function AboutSection() {
             </div>
 
             <a
-              href={bylawsPdf}
-              download="MAS-SNP-Bustos-By-Laws-2009.pdf"
+              href="/MAS-SNP-Bylaws-2009.pdf"
+              download="MAS-SNP-Bylaws-2009.pdf"
               className="group inline-flex shrink-0 items-center
-                justify-center gap-2 rounded border
-                border-[#D4AF37]/50 bg-red-950 px-5 py-3
-                text-[10px] font-bold uppercase tracking-[0.12em]
-                text-[#E6C84A] shadow-sm transition-all
-                duration-300 hover:-translate-y-0.5
-                hover:border-[#E6C84A] hover:bg-red-900
-                hover:text-yellow-200 hover:shadow-md
-                focus:outline-none focus:ring-2
-                focus:ring-[#D4AF37]/70"
+    justify-center gap-2 rounded border
+    border-[#D4AF37]/50 bg-red-950 px-5 py-3
+    text-[10px] font-bold uppercase tracking-[0.12em]
+    text-[#E6C84A] shadow-sm transition-all
+    duration-300 hover:-translate-y-0.5
+    hover:border-[#E6C84A] hover:bg-red-900
+    hover:text-yellow-200 hover:shadow-md"
             >
-              <svg
-                className="h-4 w-4 transition-transform
-                  group-hover:translate-y-0.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="1.7"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 3v12m0 0 4-4m-4 4-4-4
-                    M4.5 15.75v2.25A2.25 2.25 0 0 0
-                    6.75 20.25h10.5A2.25 2.25 0 0 0
-                    19.5 18v-2.25"
-                />
-              </svg>
-
               I-download ang Buong By-Laws
             </a>
           </div>
