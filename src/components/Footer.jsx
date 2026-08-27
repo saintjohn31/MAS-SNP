@@ -349,7 +349,8 @@ export default function Footer() {
                   src={developerPhoto}
                   alt="John Railey Pael, Web Developer"
                   className="absolute inset-0 h-full w-full
-      object-cover object-center"
+    object-cover object-[100%_center]
+    lg:object-[68%_center]"
                 />
 
                 <div
