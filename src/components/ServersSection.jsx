@@ -44,7 +44,7 @@ export default function ServersSection() {
     },
     {
       role: "Treasurer",
-      name: "Bro. ---------------------",
+      name: "Bro. Mark Clein Casipe",
       image: null,
     },
     {
