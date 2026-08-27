@@ -108,17 +108,21 @@ export default function HeroSection() {
 
           {/* Main heading */}
           <h1
-            className="max-w-5xl text-balance font-serif
-              text-[clamp(2.35rem,10vw,6.5rem)] font-bold
-              leading-[0.98] tracking-[-0.035em]
-              drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]"
+            className="font-cinzel max-w-5xl text-balance
+    text-[clamp(2.2rem,9vw,6.25rem)] font-semibold
+    uppercase leading-[0.94] tracking-[-0.025em]"
           >
-            <span className="block text-white">
+            <span
+              className="block text-white
+      [text-shadow:0_3px_3px_rgba(0,0,0,0.95),0_8px_20px_rgba(0,0,0,0.85)]"
+            >
               Ministry of
             </span>
 
             <span
-              className="mt-2 block text-[#F0D76A]"
+              className="mt-1 block text-[#F0D76A]
+      [text-shadow:0_3px_3px_rgba(0,0,0,0.95),0_8px_22px_rgba(0,0,0,0.9)]
+      sm:mt-2"
             >
               Altar Servers
             </span>
@@ -126,11 +130,13 @@ export default function HeroSection() {
 
           {/* Ministry motto */}
           <p
-            className="mt-6 font-serif text-base italic
-              tracking-[0.06em] text-[#F0D76A]
-              sm:text-lg"
+            className="font-cinzel mt-6 border-y
+              border-[#D4AF37]/50 bg-[#6b4100]/70
+              px-4 py-2 text-[10px] font-medium uppercase
+              tracking-[0.22em] text-white sm:px-8
+              sm:text-sm sm:tracking-[0.3em]"
           >
-            “Ministremus et non ministremur.”
+            Ministremus et non ministremur
           </p>
 
           {/* Main description */}
