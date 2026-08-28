@@ -100,309 +100,329 @@ export default function AboutSection() {
           </h2>
         </div>
 
-        {/* History and ministry information */}
+        {/* About the altar servers */}
         <div
-          className="grid grid-cols-1 items-start gap-12
-            lg:grid-cols-12"
+          className="mb-16 overflow-hidden rounded border
+            border-red-900/15 bg-white shadow-md"
         >
-          {/* History */}
-          <div className="space-y-6 lg:col-span-7">
-            <h3
-              className="font-serif text-2xl font-bold
-                tracking-wide text-red-900"
+          <div
+            className="grid grid-cols-1 items-stretch
+              lg:grid-cols-12"
+          >
+            <div
+              className="flex flex-col justify-center bg-red-950
+                p-6 text-white sm:p-8 lg:col-span-4 lg:p-10"
             >
-              Ang Kasaysayan ng Bustos at ng Parokya ni Sto. Niño
-            </h3>
+              <span
+                className="text-[10px] font-bold uppercase
+                  tracking-[0.2em] text-[#E6C84A]"
+              >
+                Paglilingkod · Pananampalataya · Kapatiran
+              </span>
 
-            <p
-              className="drop-cap text-justify text-base
-                leading-relaxed text-stone-800"
-            >
-              Ang Bustos ay dating bahagi ng Baliuag sa aspektong
-              pampolitika at pananampalataya. Subalit, isang malungkot
-              at makasaysayang trahedya noong taong{" "}
-              <strong>1862</strong> ang nagbago sa tadhana ng
-              pamayanan.
-            </p>
+              <h3
+                className="mt-3 font-serif text-2xl font-bold
+                  leading-tight sm:text-3xl"
+              >
+                Sino Kami Bilang mga Lingkod sa Dambana
+              </h3>
 
-            <p
-              className="text-justify text-sm leading-relaxed
-                text-stone-700 sm:text-base"
-            >
-              Sa panahon ng tag-ulan noong taong iyon, itinakda ng
-              kura paroko sa Baliuag ang isang Misa para sa
-              pagbibinyag ng mga sanggol mula sa Bustos. Upang
-              makatawid sa umaapaw na ilog, sumakay ang mga magulang,
-              sanggol, at mga ninong sa isang{" "}
-              <em>“Placenta”</em>—mga bangkang pinagdugtong ng
-              kawayang sahig. Dahil sa malalakas na hampas ng hangin
-              at ragasa ng baha, nawalan ng kontrol ang mga
-              tagagabay, tumagilid ang sasakyan, at nalunod ang
-              karamihan sa mga pasahero.
-            </p>
+              <div className="mt-5 h-px w-14 bg-[#D4AF37]" />
 
-            <p
-              className="text-justify text-sm leading-relaxed
-                text-stone-700 sm:text-base"
-            >
-              Sa matinding pagnanais na huwag nang maulit ang
-              trahedya, nagkaisa ang mga mamamayan ng Bustos na
-              magtayo ng sarili nilang simbahan. Idineklara ang
-              Bustos bilang isang independiyenteng bayan noong{" "}
-              <strong>1867</strong>. Bilang pag-alaala sa mga sanggol
-              na nalunod habang patungo sa kanilang binyag, pinili ng
-              buong bayan ang{" "}
-              <strong>Banal na Sanggol (Sto. Niño)</strong> bilang
-              kanilang Patron.
-            </p>
+              <p
+                className="mt-5 text-sm leading-7
+                  text-red-100/80"
+              >
+                Tinawag upang maglingkod nang may kababaang-loob,
+                disiplina, at pag-ibig sa Diyos at sa Simbahan.
+              </p>
+            </div>
 
             <div
-              className="flex flex-wrap items-center gap-4
+              className="space-y-5 p-6 sm:p-8
+                lg:col-span-8 lg:p-10"
+            >
+              <p
+                className="drop-cap text-justify text-sm
+                  leading-7 text-stone-700 sm:text-base
+                  sm:leading-8"
+              >
+                Ang <strong>mga Lingkod sa Dambana</strong> ng
+                Parokya ni Sto. Niño ay isang pamayanan ng mga
+                <strong> kabataang lalaki</strong> na kusang
+                inihahandog ang kanilang oras, kakayahan, at sarili
+                upang tumulong sa taimtim at maayos na pagdiriwang
+                ng Banal na Liturhiya. Higit sa
+                pagsasagawa ng mga tungkulin sa santuwaryo, ang
+                kanilang paglilingkod ay isang tugon sa tawag ng
+                Diyos at isang pagsasabuhay ng pananampalataya.
+              </p>
+
+              <p
+                className="text-justify text-sm leading-7
+                  text-stone-600 sm:text-base sm:leading-8"
+              >
+                Sa pamamagitan ng regular na formation, panalangin,
+                pagsasanay, at pakikiisa sa mga gawain ng parokya,
+                hinuhubog ang bawat kasapi sa disiplina,
+                pananagutan, paggalang sa Banal na Eukaristiya, at
+                malasakit sa kapwa. Layunin ng Ministri na mahubog
+                ang mga kabataang lalaking hindi lamang mahusay
+                maglingkod sa dambana, kundi mabubuting halimbawa
+                rin sa kanilang tahanan, paaralan, at pamayanan.
+              </p>
+
+              <div
+                className="grid grid-cols-1 gap-3 pt-2
+                  sm:grid-cols-3"
+              >
+                {[
+                  {
+                    title: "Sa Dambana",
+                    text: "Taimtim at maayos na paglilingkod sa Banal na Liturhiya.",
+                  },
+                  {
+                    title: "Sa Pamayanan",
+                    text: "Pakikiisa at malasakit sa mga gawain ng parokya.",
+                  },
+                  {
+                    title: "Sa Araw-araw",
+                    text: "Pagsasabuhay ng disiplina, pananampalataya, at mabuting asal.",
+                  },
+                ].map((identity) => (
+                  <div
+                    key={identity.title}
+                    className="rounded border border-stone-200
+                      bg-stone-50 p-4"
+                  >
+                    <h4
+                      className="font-serif text-sm font-bold
+                        text-red-900"
+                    >
+                      {identity.title}
+                    </h4>
+
+                    <p
+                      className="mt-2 text-xs leading-5
+                        text-stone-600"
+                    >
+                      {identity.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          {/* Parish history and ministry information */}
+          <div
+            className="order-2 mt-16 grid grid-cols-1 items-start gap-12
+            lg:grid-cols-12"
+          >
+            {/* History */}
+            <div className="space-y-6 lg:col-span-7">
+              <h3
+                className="font-serif text-2xl font-bold
+                tracking-wide text-red-900"
+              >
+                Ang Kasaysayan ng Bustos at ng Parokya ni Sto. Niño
+              </h3>
+
+              <p
+                className="drop-cap text-justify text-base
+                leading-relaxed text-stone-800"
+              >
+                Ang Bustos ay dating bahagi ng Baliuag sa aspektong
+                pampolitika at pananampalataya. Subalit, isang malungkot
+                at makasaysayang trahedya noong taong{" "}
+                <strong>1862</strong> ang nagbago sa tadhana ng
+                pamayanan.
+              </p>
+
+              <p
+                className="text-justify text-sm leading-relaxed
+                text-stone-700 sm:text-base"
+              >
+                Sa panahon ng tag-ulan noong taong iyon, itinakda ng
+                kura paroko sa Baliuag ang isang Misa para sa
+                pagbibinyag ng mga sanggol mula sa Bustos. Upang
+                makatawid sa umaapaw na ilog, sumakay ang mga magulang,
+                sanggol, at mga ninong sa isang{" "}
+                <em>“Placenta”</em>—mga bangkang pinagdugtong ng
+                kawayang sahig. Dahil sa malalakas na hampas ng hangin
+                at ragasa ng baha, nawalan ng kontrol ang mga
+                tagagabay, tumagilid ang sasakyan, at nalunod ang
+                karamihan sa mga pasahero.
+              </p>
+
+              <p
+                className="text-justify text-sm leading-relaxed
+                text-stone-700 sm:text-base"
+              >
+                Sa matinding pagnanais na huwag nang maulit ang
+                trahedya, nagkaisa ang mga mamamayan ng Bustos na
+                magtayo ng sarili nilang simbahan. Idineklara ang
+                Bustos bilang isang independiyenteng bayan noong{" "}
+                <strong>1867</strong>. Bilang pag-alaala sa mga sanggol
+                na nalunod habang patungo sa kanilang binyag, pinili ng
+                buong bayan ang{" "}
+                <strong>Banal na Sanggol (Sto. Niño)</strong> bilang
+                kanilang Patron.
+              </p>
+
+              <div
+                className="flex flex-wrap items-center gap-4
                 border-t border-stone-200 pt-4 font-serif
                 text-[11px] font-bold uppercase tracking-wider
                 text-stone-400"
-            >
-              <span>Pamantayan at Gabay sa Paghubog 2009</span>
-              <span aria-hidden="true">•</span>
-              <span>Diyosesis ng Malolos</span>
+              >
+                <span>Pamantayan at Gabay sa Paghubog 2009</span>
+                <span aria-hidden="true">•</span>
+                <span>Diyosesis ng Malolos</span>
+              </div>
             </div>
-          </div>
 
-          {/* Maxim and objectives */}
-          <div className="space-y-8 lg:col-span-5">
-            <div
-              className="relative overflow-hidden rounded border
+            {/* Maxim and objectives */}
+            <div className="space-y-8 lg:col-span-5">
+              <div
+                className="relative overflow-hidden rounded border
                 border-red-800 bg-gradient-to-br
                 from-red-950 to-red-900 p-6 text-white
                 shadow-xl sm:p-8"
-            >
-              <div
-                className="pointer-events-none absolute right-0 top-0
+              >
+                <div
+                  className="pointer-events-none absolute right-0 top-0
                   h-24 w-24 rounded-full bg-[#D4AF37]
                   opacity-5 blur-xl"
-              />
+                />
 
-              <div className="relative space-y-4">
-                <span
-                  className="block text-[10px] font-bold uppercase
+                <div className="relative space-y-4">
+                  <span
+                    className="block text-[10px] font-bold uppercase
                     tracking-widest text-red-300"
-                >
-                  Ang Aming Maxim
-                </span>
+                  >
+                    Ang Aming Maxim
+                  </span>
 
-                <h4
-                  className="text-gold-gradient font-serif text-xl
+                  <h4
+                    className="text-gold-gradient font-serif text-xl
                     font-extrabold tracking-wide sm:text-2xl"
-                >
-                  “MINISTREMUS ET NON MINISTREMUR”
-                </h4>
+                  >
+                    “MINISTREMUS ET NON MINISTREMUR”
+                  </h4>
 
-                <p className="font-serif text-xs italic text-red-200/70">
-                  “...that we may serve and not be served.”
-                </p>
+                  <p className="font-serif text-xs italic text-red-200/70">
+                    “...that we may serve and not be served.”
+                  </p>
 
-                <blockquote
-                  className="border-l border-[#D4AF37]/30 py-1
+                  <blockquote
+                    className="border-l border-[#D4AF37]/30 py-1
                     pl-4 text-justify font-serif text-sm italic
                     leading-relaxed text-red-100"
-                >
-                  “...tulad ng Anak ng Tao na naparito, hindi upang
-                  paglingkuran kundi upang maglingkod at ialay ang
-                  kanyang buhay upang matubos ang marami.”
-
-                  <span
-                    className="text-gold-gradient mt-2 block
-                      text-right text-xs font-bold"
                   >
-                    — Mateo 20:28
-                  </span>
-                </blockquote>
-              </div>
-            </div>
+                    “...tulad ng Anak ng Tao na naparito, hindi upang
+                    paglingkuran kundi upang maglingkod at ialay ang
+                    kanyang buhay upang matubos ang marami.”
 
-            <div
-              className="space-y-6 rounded border border-stone-200
+                    <span
+                      className="text-gold-gradient mt-2 block
+                      text-right text-xs font-bold"
+                    >
+                      — Mateo 20:28
+                    </span>
+                  </blockquote>
+                </div>
+              </div>
+
+              <div
+                className="space-y-6 rounded border border-stone-200
                 bg-white p-6 shadow-md sm:p-8"
-            >
-              <div>
-                <h4
-                  className="mb-2 font-serif text-sm font-bold
-                    uppercase tracking-widest text-red-900"
-                >
-                  Layunin ng Ministri
-                </h4>
-
-                <p
-                  className="text-justify text-xs leading-relaxed
-                    text-stone-600 sm:text-sm"
-                >
-                  Mahubog ang mga kabataang lalaki sa isang buhay,
-                  masigla, mapagmahal, mapagtiwala, at tunay na
-                  paglilingkod sa Diyos, habang pinananatili ang
-                  taimtim, maringal, at banal na pagdiriwang ng mga
-                  Sakramento.
-                </p>
-              </div>
-
-              <div className="border-t border-stone-200 pt-4">
-                <h4
-                  className="mb-2 font-serif text-sm font-bold
-                    uppercase tracking-widest text-red-900"
-                >
-                  Gampanin ng Ministri
-                </h4>
-
-                <p
-                  className="text-justify text-xs leading-relaxed
-                    text-stone-600 sm:text-sm"
-                >
-                  Bumuo ng mga mapagtiwalang kabataang naglilingkod
-                  alinsunod sa Salita ng Diyos at maging mabubuting
-                  huwaran ng kagandahang-asal sa loob at labas ng
-                  Simbahan.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Patron heading */}
-        <div
-          className="mt-16 flex flex-col justify-between gap-4 sm:mt-20 lg:mt-24
-            border-b border-stone-200 pb-5
-            md:flex-row md:items-end"
-        >
-          <div className="border-l-2 border-red-900 pl-5">
-            <span
-              className="block text-[10px] font-bold uppercase
-                tracking-[0.18em] text-red-800"
-            >
-              Patron ng mga Lingkod sa Dambana
-            </span>
-
-            <h3
-              className="mt-2 font-serif text-2xl font-bold
-                leading-tight text-red-950 sm:text-4xl"
-            >
-              Ang Aming Patrong si{" "}
-              <span className="text-gold-gradient">
-                San Tarcisio
-              </span>
-            </h3>
-          </div>
-
-          <p
-            className="max-w-lg text-justify text-xs leading-6
-              text-stone-500 sm:text-sm"
-          >
-            Martir ng Banal na Eukaristiya at huwaran ng kabataang
-            naglilingkod nang may katapangan, pananampalataya, at
-            paggalang sa mga banal na bagay.
-          </p>
-        </div>
-
-        {/* Saint Tarcisius section */}
-        <div className="mt-10">
-          <div
-            className="grid grid-cols-1 items-start gap-8
-              lg:grid-cols-12"
-          >
-            {/* Independent image card */}
-            <div
-              className="relative h-[380px] overflow-hidden rounded
-                border border-red-900/15 bg-red-950 shadow-lg
-                sm:h-[480px] lg:sticky lg:top-28 lg:col-span-5 lg:h-[560px]"
-            >
-              <img
-                src={sanTarcisio1}
-                alt="San Tarcisio, patron ng mga altar server"
-                className="absolute inset-0 h-full w-full
-                  object-cover object-top"
-              />
-
-              <div
-                className="absolute inset-0 bg-gradient-to-t
-                  from-black/85 via-black/15 to-black/10"
-              />
-
-              {/* Secondary image */}
-              <div
-                className="absolute bottom-6 right-6 h-32 w-24
-                  overflow-hidden rounded border-2
-                  border-[#D4AF37]/80 bg-red-950 shadow-2xl
-                  sm:h-40 sm:w-32"
               >
-                <img
-                  src={sanTarcisio2}
-                  alt="Paglalarawan kay San Tarcisio"
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
+                <div>
+                  <h4
+                    className="mb-2 font-serif text-sm font-bold
+                    uppercase tracking-widest text-red-900"
+                  >
+                    Layunin ng Ministri
+                  </h4>
 
-              <div className="absolute bottom-5 left-5 max-w-[55%] sm:bottom-6 sm:left-6 sm:max-w-[58%]">
-                <span
-                  className="text-[9px] font-bold uppercase
-                    tracking-[0.2em] text-[#F0D76A]"
-                >
-                  Patron ng mga Altar Server
-                </span>
+                  <p
+                    className="text-justify text-xs leading-relaxed
+                    text-stone-600 sm:text-sm"
+                  >
+                    Mahubog ang mga kabataang lalaki sa isang buhay,
+                    masigla, mapagmahal, mapagtiwala, at tunay na
+                    paglilingkod sa Diyos, habang pinananatili ang
+                    taimtim, maringal, at banal na pagdiriwang ng mga
+                    Sakramento.
+                  </p>
+                </div>
 
-                <h3
-                  className="mt-2 font-serif text-3xl font-bold
-                    text-white sm:text-4xl"
-                >
-                  San Tarcisio
-                </h3>
+                <div className="border-t border-stone-200 pt-4">
+                  <h4
+                    className="mb-2 font-serif text-sm font-bold
+                    uppercase tracking-widest text-red-900"
+                  >
+                    Gampanin ng Ministri
+                  </h4>
 
-                <p className="mt-2 text-xs text-stone-300">
-                  Martir ng Banal na Eukaristiya
-                  <span className="block">
-                    Kapistahan: Agosto 15
-                  </span>
-                </p>
+                  <p
+                    className="text-justify text-xs leading-relaxed
+                    text-stone-600 sm:text-sm"
+                  >
+                    Bumuo ng mga mapagtiwalang kabataang naglilingkod
+                    alinsunod sa Salita ng Diyos at maging mabubuting
+                    huwaran ng kagandahang-asal sa loob at labas ng
+                    Simbahan.
+                  </p>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Independent information card */}
-            <div
-              className="space-y-6 rounded border
-                border-red-900/15 bg-white p-6 shadow-lg
-                sm:p-8 lg:col-span-7 lg:p-10"
-            >
+          {/* Saint Tarcisius section */}
+          <div
+            className="order-1 mt-16 grid grid-cols-1 items-start gap-12
+            lg:grid-cols-12"
+          >
+            {/* Patron history */}
+            <div className="space-y-6 lg:col-span-7">
               <div>
                 <span
                   className="text-[10px] font-bold uppercase
-                    tracking-[0.18em] text-red-800"
+                  tracking-[0.18em] text-red-800"
                 >
-                  Huwaran ng Kabataang Naglilingkod
+                  Patron ng mga Lingkod sa Dambana
                 </span>
 
                 <h3
                   className="mt-2 font-serif text-2xl font-bold
-                    leading-tight text-red-950 sm:text-4xl"
+                  leading-tight text-red-950 sm:text-4xl"
                 >
-                  Katapatan Hanggang sa Huling Sandali
+                  Ang Aming Patrong si San Tarcisio
                 </h3>
 
                 <div className="mt-5 h-px w-16 bg-[#D4AF37]" />
               </div>
 
               <p
-                className="text-justify text-sm leading-7
-                  text-stone-700 sm:text-base sm:leading-8"
+                className="drop-cap text-justify text-base
+                leading-relaxed text-stone-800"
               >
-                Si <strong>San Tarcisio</strong> ay isang batang
+                <strong>San Tarcisio</strong> ay isang batang
                 Kristiyano na nabuhay sa Roma noong ikatlong siglo,
-                sa panahong inuusig ang mga tagasunod ni Kristo.
-                Ayon sa sinaunang tradisyon ng Simbahan, siya ay
+                sa panahong inuusig ang mga tagasunod ni Kristo. Ayon
+                sa sinaunang tradisyon ng Simbahan, siya ay
                 pinagkatiwalaang magdala ng Banal na Eukaristiya sa
                 mga Kristiyanong nakabilanggo at naghihintay ng
                 kamatayan dahil sa kanilang pananampalataya.
               </p>
 
               <p
-                className="text-justify text-sm leading-7
-                  text-stone-700 sm:text-base sm:leading-8"
+                className="text-justify text-sm leading-relaxed
+                text-stone-700 sm:text-base"
               >
                 Habang naglalakbay, hinarang siya ng isang pangkat na
                 nagtangkang kunin at lapastanganin ang kanyang
@@ -413,91 +433,151 @@ export default function AboutSection() {
                 sa sagradong tungkuling ipinagkatiwala sa kanya.
               </p>
 
-              {/* Why he is recognized as a saint */}
-              <div
-                className="rounded border border-red-900/10
-                  bg-red-50 p-5 sm:p-6"
-              >
-                <h4
-                  className="font-serif text-lg font-bold
-                    text-red-950"
-                >
-                  Bakit Siya Kinikilalang Santo?
-                </h4>
-
-                <p
-                  className="mt-3 text-justify text-sm leading-7
-                    text-stone-700"
-                >
-                  Kinikilala ng Simbahan si San Tarcisio bilang isang{" "}
-                  <strong>martir</strong> sapagkat inialay niya ang
-                  kanyang buhay alang-alang kay Kristo at sa Banal na
-                  Eukaristiya. Nabuhay siya bago pa naitatag ang
-                  makabagong proseso ng pormal na canonization. Ang
-                  kanyang kabanalan ay kinilala sa sinaunang
-                  tradisyon at patuloy na debosyon ng Simbahan sa mga
-                  martir.
-                </p>
-              </div>
-
-              {/* Why he is the patron */}
               <div>
                 <h4
                   className="font-serif text-lg font-bold
-                    text-red-950"
+                  text-red-950"
                 >
                   Bakit Siya ang Patron ng mga Altar Server?
                 </h4>
 
                 <p
                   className="mt-3 text-justify text-sm leading-7
-                    text-stone-700"
+                  text-stone-700 sm:text-base"
                 >
                   Tulad ng mga lingkod sa dambana, si San Tarcisio ay
-                  naglingkod nang malapit sa Banal na Eukaristiya.
-                  Ang kanyang paggalang sa Katawan ni Kristo,
-                  katapatan sa tungkulin, at kahandaang magsakripisyo
-                  ang dahilan kung bakit siya kinikilalang patron at
-                  huwaran ng mga altar server.
+                  naglingkod nang malapit sa Banal na Eukaristiya. Ang
+                  kanyang paggalang sa Katawan ni Kristo, katapatan sa
+                  tungkulin, at kahandaang magsakripisyo ang dahilan
+                  kung bakit siya kinikilalang patron at huwaran ng
+                  mga altar server.
                 </p>
               </div>
 
-              {/* Virtues */}
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                {virtues.map((virtue) => (
-                  <div
-                    key={virtue.title}
-                    className="rounded border border-stone-200
-                      bg-stone-50 p-4"
-                  >
-                    <span
-                      className="font-serif text-sm font-bold
-                        text-red-900"
-                    >
-                      {virtue.title}
-                    </span>
-
-                    <p
-                      className="mt-2 text-xs leading-5
-                        text-stone-600"
-                    >
-                      {virtue.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
               <blockquote
-                className="border-l-2 border-[#D4AF37]
-                  pl-5 font-serif text-sm italic leading-7
-                  text-red-950 sm:text-base"
+                className="border-l-2 border-[#D4AF37] pl-5
+                font-serif text-sm italic leading-7 text-red-950
+                sm:text-base"
               >
                 Sa kanyang murang edad, ipinakita ni San Tarcisio na
                 ang tunay na paglilingkod ay may kasamang tapang,
                 pananampalataya, at lubos na pag-ibig kay Kristo.
               </blockquote>
+
+              <div
+                className="flex flex-wrap items-center gap-4 border-t
+                border-stone-200 pt-4 font-serif text-[11px]
+                font-bold uppercase tracking-wider text-stone-400"
+              >
+                <span>Martir ng Banal na Eukaristiya</span>
+                <span aria-hidden="true">•</span>
+                <span>Kapistahan · Agosto 15</span>
+              </div>
+            </div>
+
+            {/* Patron cards */}
+            <div className="space-y-8 lg:col-span-5">
+              <div
+                className="relative aspect-[4/3] overflow-hidden
+                rounded border border-red-800 bg-red-950 shadow-xl"
+              >
+                <img
+                  src={sanTarcisio1}
+                  alt="San Tarcisio, patron ng mga altar server"
+                  className="absolute inset-0 h-full w-full
+                  object-cover object-top"
+                />
+
+                <div
+                  className="absolute inset-0 bg-gradient-to-t
+                  from-black via-black/10 to-transparent"
+                />
+
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+                  <span
+                    className="text-[9px] font-bold uppercase
+                    tracking-[0.2em] text-[#F2D65C]"
+                  >
+                    Huwaran ng Kabataang Naglilingkod
+                  </span>
+
+                  <h4
+                    className="mt-2 font-serif text-3xl font-bold
+                    leading-tight text-white"
+                  >
+                    Katapatan Hanggang sa Huling Sandali
+                  </h4>
+                </div>
+
+                <div
+                  className="absolute right-5 top-5 z-20 aspect-[3/4]
+                  w-20 overflow-hidden rounded border
+                  border-[#D4AF37] bg-red-950 shadow-xl sm:w-24"
+                >
+                  <img
+                    src={sanTarcisio2}
+                    alt="Paglalarawan kay San Tarcisio at sa Banal na Eukaristiya"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              <div
+                className="rounded border border-stone-200 bg-white
+                p-6 shadow-md sm:p-8"
+              >
+                <h4
+                  className="font-serif text-sm font-bold uppercase
+                  tracking-widest text-red-900"
+                >
+                  Bakit Siya Kinikilalang Santo?
+                </h4>
+
+                <p
+                  className="mt-3 text-justify text-xs leading-relaxed
+                  text-stone-600 sm:text-sm"
+                >
+                  Kinikilala ng Simbahan si San Tarcisio bilang isang
+                  martir sapagkat inialay niya ang kanyang buhay
+                  alang-alang kay Kristo at sa Banal na Eukaristiya.
+                  Ang kanyang kabanalan ay kinilala sa sinaunang
+                  tradisyon at patuloy na debosyon ng Simbahan.
+                </p>
+
+                <div
+                  className="mt-6 border-t border-stone-200 pt-5"
+                >
+                  <h4
+                    className="font-serif text-sm font-bold uppercase
+                    tracking-widest text-red-900"
+                  >
+                    Mga Huwarang Katangian
+                  </h4>
+
+                  <div className="mt-4 space-y-4">
+                    {virtues.map((virtue) => (
+                      <div key={virtue.title}>
+                        <span
+                          className="font-serif text-sm font-bold
+                          text-red-900"
+                        >
+                          {virtue.title}
+                        </span>
+
+                        <p
+                          className="mt-1 text-xs leading-5
+                          text-stone-600"
+                        >
+                          {virtue.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
 
         {/* By-laws */}
