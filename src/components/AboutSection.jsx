@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import sanTarcisio1 from "../santarcisio1.jpg";
 import sanTarcisio2 from "../santarcisio2.jpg";
@@ -214,6 +214,9 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
+
+        {/* Renewal members directory */}
+        <MembersDirectory />
 
         <div className="flex flex-col">
           {/* Parish history and ministry information */}
@@ -708,4 +711,411 @@ export default function AboutSection() {
       </div>
     </section>
   );
+}
+
+const MEMBERS_SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/12t5w-hz12dgyBN7Uh2foR2m3JcHWnZs5/gviz/tq?tqx=out:csv&gid=10196480";
+
+function MembersDirectory() {
+  const [members, setMembers] = useState([]);
+  const [search, setSearch] = useState("");
+  const [selectedBarangay, setSelectedBarangay] = useState("Lahat");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadRenewals() {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await fetch(MEMBERS_SHEET_URL, {
+          signal: controller.signal,
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("Hindi mabasa ang kasalukuyang member list.");
+        }
+
+        const csv = await response.text();
+        const rows = parseCsv(csv);
+
+        /*
+          Mga kasapi mula sa renewal list sa Sheet:
+          1 = Number, 2 = Name, 3 = Address/Barangay.
+          Hindi kinukuha ang birthdate, age, at rank.
+        */
+        const renewalMembers = rows
+          .slice(2)
+          .filter((row) => row[1]?.trim() && row[2]?.trim())
+          .map((row) => ({
+            id: row[1].trim(),
+            name: cleanCell(row[2]),
+            barangay: cleanCell(row[3]) || "Hindi Natukoy",
+          }));
+
+        setMembers(renewalMembers);
+      } catch (loadError) {
+        if (loadError.name !== "AbortError") {
+          setError(loadError.message);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadRenewals();
+
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+
+    const closeWithEscape = (event) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeWithEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeWithEscape);
+    };
+  }, [isOpen]);
+
+  const barangays = useMemo(
+    () => [
+      "Lahat",
+      ...Array.from(new Set(members.map((member) => member.barangay))).sort(
+        (a, b) => a.localeCompare(b),
+      ),
+    ],
+    [members],
+  );
+
+  const filteredMembers = useMemo(() => {
+    const query = search.trim().toLocaleLowerCase();
+
+    return members.filter((member) => {
+      const matchesBarangay =
+        selectedBarangay === "Lahat" ||
+        member.barangay === selectedBarangay;
+
+      const matchesSearch =
+        !query ||
+        member.name.toLocaleLowerCase().includes(query) ||
+        member.barangay.toLocaleLowerCase().includes(query);
+
+      return matchesBarangay && matchesSearch;
+    });
+  }, [members, search, selectedBarangay]);
+
+  const groupedMembers = useMemo(() => {
+    return filteredMembers.reduce((groups, member) => {
+      if (!groups[member.barangay]) {
+        groups[member.barangay] = [];
+      }
+
+      groups[member.barangay].push(member);
+      return groups;
+    }, {});
+  }, [filteredMembers]);
+
+  return (
+    <>
+      <section
+        id="members"
+        className="mt-16 overflow-hidden rounded border border-red-900/15 bg-white shadow-md"
+      >
+        <div className="flex flex-col gap-6 bg-red-950 px-6 py-8 text-white sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+          <div className="max-w-2xl">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E6C84A]">
+              Ministry Directory
+            </span>
+            <h3 className="mt-3 font-serif text-2xl font-bold leading-tight sm:text-3xl">
+              Mga Kasapi ng Ministry of Altar Servers
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-red-100/80">
+              Tingnan ang mga kasapi na nakaayos ayon sa kanilang
+              barangay o bisita.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            aria-haspopup="dialog"
+            aria-expanded={isOpen}
+            className="inline-flex min-h-12 shrink-0 items-center justify-center rounded border border-[#D4AF37] bg-[#D4AF37] px-5 py-3 text-center text-[10px] font-bold uppercase tracking-[0.12em] text-red-950 shadow-md transition hover:-translate-y-0.5 hover:bg-[#E6C84A] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-950"
+          >
+            Mga Kasapi ng Ministry of Altar Servers
+          </button>
+        </div>
+      </section>
+
+      {isOpen && (
+        <div
+          className="fixed inset-x-0 bottom-0 top-16 z-[100] flex items-center justify-center bg-black/70 p-3 backdrop-blur-sm sm:p-5"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setIsOpen(false);
+          }}
+        >
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="members-modal-title"
+            className="relative flex h-full w-full max-w-6xl flex-col overflow-hidden rounded border border-[#D4AF37]/40 bg-white shadow-2xl sm:h-auto sm:max-h-full"
+          >
+            <div className="relative shrink-0 bg-red-950 px-5 py-5 pr-16 text-white sm:px-8 sm:py-7 lg:px-10">
+              <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end md:gap-6">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E6C84A]">
+                    Ministry Directory
+                  </span>
+
+                  <h3 id="members-modal-title" className="mt-2 font-serif text-xl font-bold leading-tight sm:mt-3 sm:text-3xl">
+                    Mga Kasapi ng Ministry of Altar Servers
+                  </h3>
+
+                  <div className="mt-3 h-px w-14 bg-[#D4AF37] sm:mt-5" />
+
+                  <p className="mt-3 hidden max-w-2xl text-sm leading-7 text-red-100/80 sm:block">
+                    Kilalanin ang mga kasaping nagpapanibago ng kanilang
+                    pagtatalaga sa paglilingkod. Ang listahan ay nakaayos ayon
+                    sa barangay o bisitang kanilang kinabibilangan.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 sm:min-w-64 sm:gap-3">
+                  <DirectoryStat label="Mga Kasapi" value={members.length} />
+                  <DirectoryStat
+                    label="Mga Barangay"
+                    value={Math.max(barangays.length - 1, 0)}
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Isara ang listahan ng mga kasapi"
+                  className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/10 text-2xl leading-none text-white transition hover:bg-white hover:text-red-950 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] sm:right-5 sm:top-5"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 sm:p-8 lg:p-10">
+              <div className="grid grid-cols-1 gap-4 border-b border-stone-200 pb-6 md:grid-cols-[minmax(0,1fr)_260px]">
+                <label className="block">
+                  <span className="mb-2 block text-[10px] font-bold uppercase tracking-widest text-stone-500">
+                    Hanapin ang Kasapi
+                  </span>
+                  <input
+                    type="search"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                    placeholder="Ilagay ang pangalan o barangay..."
+                    className="h-12 w-full rounded border border-stone-300 bg-white px-4 text-sm text-stone-800 outline-none transition focus:border-red-900 focus:ring-2 focus:ring-red-900/10"
+                  />
+                </label>
+
+                <label className="block">
+                  <span className="mb-2 block text-[10px] font-bold uppercase tracking-widest text-stone-500">
+                    Salain Ayon sa Barangay
+                  </span>
+                  <select
+                    value={selectedBarangay}
+                    onChange={(event) => setSelectedBarangay(event.target.value)}
+                    className="h-12 w-full rounded border border-stone-300 bg-white px-4 text-sm text-stone-800 outline-none transition focus:border-red-900 focus:ring-2 focus:ring-red-900/10"
+                  >
+                    {barangays.map((barangay) => (
+                      <option key={barangay} value={barangay}>
+                        {barangay}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              {loading && <MembersLoading />}
+
+              {!loading && error && (
+                <div className="mt-8 rounded border border-red-200 bg-red-50 p-6 text-center">
+                  <h4 className="font-serif text-lg font-bold text-red-950">
+                    Hindi Maipakita ang Member List
+                  </h4>
+                  <p className="mt-2 text-sm leading-6 text-stone-600">{error}</p>
+                  <a
+                    href={MEMBERS_SHEET_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex text-xs font-bold uppercase tracking-wider text-red-900 hover:underline"
+                  >
+                    Buksan ang Source Sheet
+                  </a>
+                </div>
+              )}
+
+              {!loading && !error && filteredMembers.length === 0 && (
+                <div className="mt-8 rounded border border-stone-200 bg-stone-50 p-8 text-center">
+                  <h4 className="font-serif text-lg font-bold text-red-950">
+                    Walang Nakitang Kasapi
+                  </h4>
+                  <p className="mt-2 text-sm text-stone-600">
+                    Subukang baguhin ang pangalan o barangay na hinahanap.
+                  </p>
+                </div>
+              )}
+
+              {!loading && !error && filteredMembers.length > 0 && (
+                <div className="mt-8 space-y-10">
+                  {Object.entries(groupedMembers)
+                    .sort(([barangayA], [barangayB]) =>
+                      barangayA.localeCompare(barangayB),
+                    )
+                    .map(([barangay, barangayMembers]) => (
+                      <BarangayMembers
+                        key={barangay}
+                        barangay={barangay}
+                        members={barangayMembers}
+                      />
+                    ))}
+                </div>
+              )}
+
+              <div className="mt-10 border-t border-stone-200 pt-5">
+                <p className="text-[10px] leading-5 text-stone-500 sm:text-xs">
+                  Hindi ipinapakita ang birthdate, edad, at iba pang personal na
+                  impormasyon ng mga kasapi.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
+    </>
+  );
+}
+
+function BarangayMembers({ barangay, members }) {
+  return (
+    <section>
+      <div className="mb-4 flex items-center justify-between gap-4 border-b border-stone-200 pb-3">
+        <div>
+          <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-red-800">
+            Barangay / Bisita
+          </span>
+          <h4 className="mt-1 font-serif text-xl font-bold text-red-950">
+            {barangay}
+          </h4>
+        </div>
+
+        <span className="rounded-full bg-red-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-red-900">
+          {members.length} {members.length === 1 ? "Kasapi" : "Kasapi"}
+        </span>
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {members.map((member) => (
+          <article
+            key={`${member.id}-${member.name}`}
+            className="group rounded border border-stone-200 bg-stone-50 p-4 transition hover:border-red-900/20 hover:bg-white hover:shadow-sm"
+          >
+            <div className="flex items-start">
+              <div className="min-w-0">
+                <h5 className="font-serif text-sm font-bold leading-5 text-stone-900 group-hover:text-red-900">
+                  Bro. {member.name}
+                </h5>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function DirectoryStat({ label, value }) {
+  return (
+    <div className="rounded border border-white/10 bg-white/5 p-4 text-center">
+      <strong className="block font-serif text-2xl text-[#F0D76A]">
+        {value}
+      </strong>
+      <span className="mt-1 block text-[9px] font-bold uppercase tracking-widest text-red-100/60">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function MembersLoading() {
+  return (
+    <div className="mt-8 space-y-8 animate-pulse">
+      {[1, 2].map((group) => (
+        <div key={group}>
+          <div className="h-7 w-44 rounded bg-stone-200" />
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {[1, 2, 3].map((member) => (
+              <div key={member} className="h-20 rounded bg-stone-100" />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function parseCsv(csv) {
+  const rows = [];
+  let row = [];
+  let cell = "";
+  let insideQuotes = false;
+
+  for (let index = 0; index < csv.length; index += 1) {
+    const character = csv[index];
+    const nextCharacter = csv[index + 1];
+
+    if (character === '"' && insideQuotes && nextCharacter === '"') {
+      cell += '"';
+      index += 1;
+    } else if (character === '"') {
+      insideQuotes = !insideQuotes;
+    } else if (character === "," && !insideQuotes) {
+      row.push(cell);
+      cell = "";
+    } else if ((character === "\n" || character === "\r") && !insideQuotes) {
+      if (character === "\r" && nextCharacter === "\n") {
+        index += 1;
+      }
+
+      row.push(cell);
+      rows.push(row);
+      row = [];
+      cell = "";
+    } else {
+      cell += character;
+    }
+  }
+
+  if (cell.length > 0 || row.length > 0) {
+    row.push(cell);
+    rows.push(row);
+  }
+
+  return rows;
+}
+
+function cleanCell(value = "") {
+  return value.replace(/\s+/g, " ").trim();
 }

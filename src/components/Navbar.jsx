@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "Home", href: "#home" },
     { name: "Tungkol sa Amin", href: "#about" },
     { name: "Mga Lingkod", href: "#servers" },
-    { name: "Mga Programa", href: "#programs" },
+    { name: "Mga Balita at Gawain", href: "#programs" },
     { name: "Sumapi sa Amin", href: "#join" },
   ];
 
